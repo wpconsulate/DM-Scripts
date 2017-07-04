@@ -1,0 +1,122 @@
+<?php
+include("../../../../../../wp-config.php");
+include "swift/swift_required.php";
+include 'SmtpApiHeader.php';
+date_default_timezone_set('Asia/Calcutta');
+$hdr = new SmtpApiHeader();
+global $wpdb;
+$today=date("Y-m-d");
+$res=$wpdb->get_results("SELECT * FROM `wp_messages` WHERE status='2' AND wp_messages.date='$today'");
+//print_r($res);
+foreach($res as $camp){
+$nameList=array();
+$toList=array();
+$rows = $wpdb->get_results("SELECT * FROM `wp_messages`
+INNER JOIN `wp_campaign_list_rel` ON wp_messages.campaignID = wp_campaign_list_rel.campaign_id 
+INNER JOIN `wp_contacts` ON wp_campaign_list_rel.list_id = wp_contacts.list_id WHERE wp_messages.status='2' AND wp_messages.date='$today' AND wp_messages.id='".$camp->id."'");
+foreach($rows as $row){
+$nameList[]= $row->first_name." ".$row->last_name;
+$toList[]=$row->email;
+}
+print_r($toList);
+echo "<br><br>";
+//$toList = array('vn.sujithayur@gmail.com',"fdgddfg@fgdf.com","sujith.ayur@gmail.com");
+
+//$nameList = array('Name 1', 'Name 2');
+//$timeList = array('4 PM', '5 PM');
+//$hdr->addSubVal('-time-', $timeList);
+
+$hdr->addSubVal('-name-', $nameList);
+$hdr->addTo($toList);
+//category Name,List id,Campaign id,
+$hdr->setCategory("category2"); //cat name
+$hdr->setCategory("25");       //list id
+$hdr->setCategory($rows[0]->campaignID);      //Campaign id
+
+
+#$hdr->addFilterSetting('footer', 'enable', 1);
+#$hdr->addFilterSetting('footer', "text/plain", "Thank you for your business");
+
+
+// The subject of your email
+$subject = $rows[0]->message_name; //'Example SendGrid Email';
+
+$from = array('campaign@somdev.com' => 'Somdev');
+
+echo $subject;
+echo "<br><br>";
+print_r($from);
+echo "<br><br>";
+//$to = array('defaultdestination@example.com'=>'Personal Name Of Recipient');
+
+$text = <<<EOM
+Hello -name-,
+
+Thank you for your interest in our products. We have set up an appointment
+to call you at -time- EST to discuss your needs in more detail.
+
+Regards,
+Fred
+EOM;
+
+
+$html = <<<EOM
+<html>
+  <head></head>
+  <body>
+    <p>Hello -name-,<br>
+       Thank you for your interest in our products <a href='http://google.com'>Google</a>. http://google.com We have set up an appointment
+             to call you at -time- EST to discuss your needs in more detail.
+
+                Regards,
+
+                Fred, How are you?<br>
+    </p>
+  </body>
+</html>
+EOM;
+
+//$html =$rows[0]->message;
+echo $html;
+echo "<br><br>";
+// Your SendGrid account credentials
+$username = 'PeakCampus';
+$password = '@tl@nt@12!';
+
+// Create new swift connection and authenticate
+$transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 25);
+$transport ->setUsername($username);
+$transport ->setPassword($password);
+$swift = Swift_Mailer::newInstance($transport);
+
+// Create a message (subject)
+$message = new Swift_Message($subject);
+
+// add SMTPAPI header to the message
+// *****IMPORTANT NOTE*****
+// SendGrid's asJSON function escapes characters. If you are using Swift Mailer's
+// PHP Mailer functions, the getTextHeader function will also escape characters.
+// This can cause the filter to be dropped.
+$headers = $message->getHeaders();
+$headers->addTextHeader('X-SMTPAPI', $hdr->asJSON());
+
+// attach the body of the email
+$message->setFrom($from);
+$message->setBody($html, 'text/html');
+$message->setTo($to);
+$message->addPart($text, 'text/plain');
+
+// send message
+if ($recipients = $swift->send($message, $failures))
+{
+// This will let us know how many users received this message
+// If we specify the names in the X-SMTPAPI header, then this will always be 1.
+echo 'Message sent out to '.count($to).' users';
+}
+// something went wrong =(
+else
+{
+echo "Something went wrong - ";
+print_r($failures);
+}
+}

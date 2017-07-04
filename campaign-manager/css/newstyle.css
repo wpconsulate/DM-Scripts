@@ -1,0 +1,60 @@
+.blue-header,.siteIdCls{
+    height: 40px;
+    width: 960px;
+    padding:1px;
+}
+.blue-header{
+    background-color: #E9F5F6;
+}
+.siteIdCls{
+    background-color: #F1F1F1;
+    height: 58px;
+}
+h3{
+font-family:Helvetica;
+}
+#savesendgrid{
+    background-color: #F1F1F1;
+    margin-left: 64px;
+    width: 169px;
+    }
+#user{
+    margin-left: 100px !important;
+    width: 241px !important;
+}
+#pass{
+    margin-left: 102px !important;
+    margin-top: 5px !important;
+    width: 240px !important;
+}
+
+#savesendgrid , #saveEmailSettings {
+    margin-left: 165px !important;
+    margin-top: 6px !important;
+    width: 200px !important;
+    background-color:#F1F1F1;
+}
+.oddClassPermission{
+background-color:#F1F1F1;
+}
+evenClassPermission{
+background-color:#FFF;
+}
+#from{
+        margin-left: 119px;
+        width:241px;
+}
+#reply{
+    margin-left: 100px;
+    margin-top: 5px;
+    width:241px;
+}
+.ui-widget-header{
+background:none !important;
+}
+.gradeA:hover{
+background-color:#DEEDFF !important;
+}
+.columhead{
+background-image: url("http://somdev1.us/wp-content/plugins/campaign-manager/images/grdnt.png") !important;
+}

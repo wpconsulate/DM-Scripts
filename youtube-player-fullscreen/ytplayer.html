@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+
+        <style type="text/css">
+        	html {
+			  padding: 1em;
+			}
+			button {
+			  width: 200px;
+			  height: 100px;
+			  margin-bottom: 1em;
+			}
+			#player{
+				width: 0px !important;
+				height: 0px !important;
+				overflow: hidden;
+			}
+        </style>
+
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <h1>One-click play+fullscreen via YouTube API</h1>
+		Suggested code from this <a href="http://stackoverflow.com/a/20289540/288906">StackOverflow answer</a>
+
+		<h2>Instructions</h2>
+		<ol>
+		  <li>Click on [play fullscreen]</li>
+		  <li>Click on the fullscreen button in youtube's player to exit fullscreen</li>
+		</ol>
+
+		<script src="https://www.youtube.com/iframe_api"></script>
+		<button>play fullscreen</button><br>
+		<div id="player"></div>
+
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="//sindresorhus.com/screenfull.js/src/screenfull.js" ></script>
+		<script type="text/javascript">
+			var player, iframe;
+			var qs = document.querySelector.bind(document);
+
+			// init player
+			function onYouTubeIframeAPIReady() {
+			  player = new YT.Player('player', {
+			    height: '200',
+			    width: '300',
+			    videoId: 'CzLWdNfNj-4',
+			    events: {
+			      'onReady': onPlayerReady,
+			      'onStateChange': onPlayerStateChange
+			    }
+			  });
+			}
+
+			// when ready, wait for clicks
+			function onPlayerReady(event) {
+			  var player = event.target;
+			  iframe = qs('#player');
+			  setupListener();
+			  console.log(YT.PlayerState);
+			}
+
+			function setupListener (){
+				qs('button').addEventListener('click', playFullscreen);
+			}
+
+
+			function onPlayerStateChange(event) {
+
+				if ( ( event.data == YT.PlayerState.PAUSED ) || ( event.data == YT.PlayerState.ENDED ) ) {
+
+					if (screenfull.enabled)
+				 		screenfull.exit();
+
+				 	console.log(event.data);
+				}
+				
+			}
+			
+
+			function stopVideo() {
+		        player.stopVideo();
+		      }
+
+			function playFullscreen (){
+	
+				player.playVideo();//won't work on mobile
+
+				if (screenfull.enabled) {
+					screenfull.request(iframe);
+				}
+				
+				if (screenfull.enabled) {
+					screenfull.onchange(() => {
+						// console.log('Am I fullscreen?', screenfull.isFullscreen ? 'Yes' : 'No');
+						if(!screenfull.isFullscreen){
+							stopVideo();
+						}
+					});
+				}
+			}
+
+
+
+		</script>
+
+    </body>
+</html>

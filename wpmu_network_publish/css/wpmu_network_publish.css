@@ -1,0 +1,124 @@
+.aural-info {
+	display: none;
+}
+
+.bigp{
+	margin-bottom: 4em;
+}
+
+div.wpmu_network_publish_group{
+	margin-bottom: 5em;
+}
+
+ul.broadcast_blogs
+{
+	list-style-type: none;
+}
+.broadcast_to ul li
+{
+	padding: 0 6px;
+}
+
+.float-right
+{
+	float: right;
+	margin: 0 0 10px 10px;
+}
+
+#broadcast_help
+{
+	max-width: 60em;
+}
+
+.border-single
+{
+	border-style: solid;
+	border-width: 1px;
+	
+}
+
+.textcenter
+{
+	text-align: center;
+}
+
+
+#wpmu_network_publish li.blog_is_already_linked
+{
+/*	background-image: url("../images/link-16.png");*/
+/*	background-position: right center;*/
+/*	background-repeat: no-repeat;*/
+}
+#wpmu_network_publish li.blog_is_required {
+	background-image: url("../images/lock-16.png");
+	background-position: right center;
+	background-repeat: no-repeat;
+}
+
+tr.action__wpmu_published td.activity_monitor_action
+{
+	background-image: url("../images/wpmu_activity_monitor_icon.png");
+}
+
+/**
+	Expanding box!
+**/
+#wpmu_network_publish .broadcast_to
+{
+	position: relative;
+}
+
+#wpmu_network_publish .broadcast_to .arrow_container
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 30px;
+	width: 30px;
+	background-image: url("../../../../wp-admin/images/arrows-2x.png");
+	background-position: center bottom;
+}
+
+#wpmu_network_publish .broadcast_to .arrow
+{
+	height: 100%;
+	width: 100%;
+}
+
+#wpmu_network_publish .broadcast_to_opened .arrow_container
+{
+	background-position: center top;
+}
+/**
+	Quick selection changed
+**/
+#wpmu_network_publish .selection_change { text-align: center; font-size: 80%; cursor: pointer; }
+
+input[type="checkbox"], input[type="radio"] { vertical-align: middle; }
+
+.network_publish_to{ }
+.network_publish_to ul.geogoer_vchecks{ list-style-type: none; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px; }
+.network_publish_to ul.geogoer_vchecks li.first{ /*background-image: url(../images/top_button_bg.gif);*/  background-repeat: no-repeat;  background-position: top right; border-width: 0px 0px 1px 0px; border-style: solid; border-color: #d5d5d5; }
+.network_publish_to ul.geogoer_vchecks li.first_hover{ /*background-image: url(../images/top_button_bg_hover.gif);*/ }
+.network_publish_to ul.geogoer_vchecks li.first label{ /*background-image: url(../images/top_button_left.gif);*/ background-repeat: no-repeat; background-position: top left; padding-top: 6px; height: 20px; }
+.network_publish_to ul.geogoer_vchecks li.first_hover label{ /*background-image: url(../images/top_button_left_hover.gif);*/ }
+.network_publish_to ul.geogoer_vchecks li.last{ /*background-image: url(../images/bottom_button_bg.gif);*/ background-repeat: no-repeat; background-position: top right; border-width: 0px 0px 0px 0px; }
+.network_publish_to ul.geogoer_vchecks li.last_hover{ /*background-image: url(../images/bottom_button_bg_hover.gif);*/ }
+.network_publish_to ul.geogoer_vchecks li.last label{ /*background-image: url(../images/bottom_button_left.gif);*/ background-repeat: no-repeat; background-position: top left; }
+.network_publish_to ul.geogoer_vchecks li.last_hover label{ /*background-image: url(../images/bottom_button_left_hover.gif);*/ }
+.network_publish_to ul.geogoer_vchecks li{ position: relative; border-width: 0px 0px 1px 0px; border-style: solid; border-bottom-color: #d5d5d5;/*background-image: url(../images/button_bg.gif);*/ background-repeat: no-repeat; background-position: top right; margin: 0; }
+.network_publish_to ul.geogoer_vchecks li.hover{ /*background-image: url(../images/button_bg_hover.gif);*/ }
+.network_publish_to ul.geogoer_vchecks li label{ color: black; font-weight: bold; font-size: 11px; cursor: pointer; display: block; height: 21px; padding-top: 5px; padding-left: 15px; /*background-image: url(../images/button_left.gif);*/ background-repeat: no-repeat; background-position: top left;line-height: 20px; }
+.network_publish_to ul.geogoer_vchecks li.hover label{ /*background-image: url(../images/button_left_hover.gif);*/ }
+.network_publish_to ul.geogoer_vchecks li.checked div.check_div{ background-image: url(../images/tick.png); background-repeat: no-repeat;  }
+.network_publish_to ul.geogoer_vchecks li.unchecked div.check_div{ background-image: url(../images/cross.png); background-repeat: no-repeat; }
+.network_publish_to ul.geogoer_vchecks li.unchecked label{ color: #999999; }
+.network_publish_to ul.geogoer_vchecks li div.check_div{ display: block; height: 16px; width: 16px; position: absolute;  top: 5px;  right: 10px; }
+
+
+.network_publish_to ul.geogoer_vchecks li .actions{ position: absolute; right: 35px; top: 5px; display: none; }
+.network_publish_to ul.geogoer_vchecks li:hover .actions{ display: block; }
+
+/*p.broadcast_input_addtomenu{ float: left; width:100%; }
+p.broadcast_input_addtomenu label{ float: left; }
+p.broadcast_input_addtomenu input{  }*/

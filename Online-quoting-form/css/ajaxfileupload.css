@@ -1,0 +1,328 @@
+/*html, body
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    font: 12px/1.3em Arial, Helvetica, sans-serif;
+    color: #000;
+    background-color: #fff;
+}
+h1, h2, h3, h4, h5
+{
+    margin: 0 0 2px;
+    color: #EEEEEE
+}*/
+/*h1
+{
+    font-size: 18px;
+    font-weight: normal;
+}
+h2{
+ font-weight: 500;   
+}*/
+p{margin: 0 0 1em;}
+a,
+a:link,
+/*a:visited{color: #F2683E;}*/
+a:hover,
+a:active{}
+a img{border: none;}
+form{margin: 0;}
+fieldset{padding: 0;}
+hr
+{
+    height: 1px;
+    border: none;
+    color: #999;
+    background-color: #999;
+}
+
+/* ~~~ === POSITIONG SELECTORS ======================================= ~~~ */
+/*#wrapper
+{
+    position: relative;
+    width: 773px;
+    height: 474px;
+}#/
+/*
+#content
+{
+    float: left;
+    display: inline;
+    width: 541px;
+    height: 341px;
+    margin: 30px 0 0 8px;
+    padding: 22px;
+}*/
+/* custom css*/
+
+#Enquiry_form{
+ color:#F7F7F7 ; 
+ font-family:'PT Sans Narrow'; 
+}
+.inner .order_form_head {
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 8px;
+    font-size: 24px;
+    padding: 15px 3px;
+    text-align: center;
+    font-family:'PT Sans Narrow'; 
+
+}
+.inner .order_form_head span{
+   color: red; 
+}
+inner .order_form_head .arrowred{
+float:right;
+margin-top: 2px;
+}
+#Enquiry_form input {
+    background: none repeat scroll 0 0 #BDBDBD;
+    border: 1px solid;
+    height: 14px;
+    margin:4px 0px;    
+}
+.contact-details h4
+	{
+		color:#fff;
+		font-size:15px;
+		font-weight:bold;
+		margin-bottom:11px;
+	}	
+.tell_us_content h4
+	{
+		margin-bottom:0px;
+	}
+.tell_us_content #work_desc
+	{
+		width:97%;
+	}
+.contact-details-inner p 
+	{
+		margin-bottom:0px;
+	}
+.contact-details-inner p input
+	{
+		background:#fff !important;
+		border:solid 1px #fff !important;
+	}
+.nature-container,
+.contact-details-inner,
+.council-container
+	{
+		padding-bottom:20px;
+	}
+.nature-container p
+	{
+		width:50%;
+		float:left;
+		margin-bottom:0px;
+	}
+.nature-container p span
+	{
+		font-size:14px;
+	}
+.clr
+	{
+		clear:both;
+	}
+#Enquiry_form label {
+    float: left;
+    width: 22%;
+}
+
+.contact-details label 
+{
+    font-size: 14px;
+}
+.contact-details > p {
+    font-size: 14px;
+}
+.council-container p
+	{
+		margin-bottom:0px;
+	}
+.council-container p label
+	{
+		width:80% !important;
+		
+	}
+.dm_frm {
+  background:#85b602 !important;
+  opacity: 0.9;
+  color:#e7e7e7;
+  border-radius:6px 6px 0px 0px;
+  -ms-border-radius:6px 6px 0px 0px;
+  -moz-border-radius:6px 6px 0px 0px;
+  -webkit-border-radius:6px 6px 0px 0px;
+  position:relative;
+}
+.contact-details {
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-bottom: 20px;
+}
+.dm_frm > h2 , h3{
+   font-size: 25px;
+   margin: 0; 
+   text-transform: uppercase !important;
+}
+.query label{
+  width: 80% !important;  
+  font-size: 14px;
+}
+
+#Enquiry_form h2 {
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: normal;
+}
+.order_query > h3 {
+    font-size: 19px;
+    margin: 0;
+}
+ 
+.select_size{ 
+}
+.select_size label {
+    width: 85% !important;
+}
+.select_size input {
+    margin: 0 !important;
+    width: 15% !important;
+    float: left;
+}
+.select_size p {
+ margin: 5px -3px;
+}
+.half_left{
+  width:55%;
+  float: left; 
+}
+.half_right{
+  width: 44%;
+  float: right;   
+}
+.half_left > label {
+    width: 17% !important;
+}
+.half_left > input {
+   float: right !important;
+   width: 42% !important;
+}
+.half_right > label {
+    width: 17% !important;
+     margin-top: 4px;
+}
+.half_right > input {
+    float: right;
+    width: 63% !important;
+}
+
+.query textarea {
+   background: none repeat scroll 0 0 #BDBDBD; 
+   border: 1px solid;
+}
+
+#enqury{
+  cursor: pointer;
+  font-size: 12px;  
+}
+.dm_frm_send {
+    background: none repeat scroll 0 0 #E5C6C6 !important;
+    color: #EFEFEF !important;
+    width: 30% !important;
+    align-self: center;
+    height: 34px !important;
+}
+.upload-btn > input {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border: 0 none !important;
+    height: 33px !important;
+    width: 78% !important;
+}
+.upload-btn .button{
+background: none repeat scroll 0 0 #E5C6C6 !important;
+    color: #EFEFEF !important;
+    width: 30% !important;
+    align-self: center;
+    height: 34px !important;
+}
+
+.upload-btn {
+    margin-top: 10px;
+}
+#fileToUpload {
+    /*background: none repeat scroll 0 0 #FFFFFF !important;*/
+    border: 0 none !important;
+    cursor: pointer;
+    height: 29px !important;
+    margin: 0;
+    padding: 0;
+}
+.file-wrapper
+	{
+		margin-left:60px;
+	}
+.file-wrapper input
+	{
+		opacity:0 !important;
+		height:23px !important;
+	}
+.file-wrapper .uplod-btn
+	{
+		background:#b8bcbf;
+		border-radius:3px;
+		-ms-border-radius:3px;
+		-moz-border-radius:3px;
+		-webkit-border-radius:3px;
+		padding:7px 15px;
+		display:inline-block;		
+	}
+.file-wrapper .uplod-btn a	
+	{
+		color:#fff !important;	
+	}
+#Enquiry_form
+	{
+		padding: 20px 0 8px 2px;
+	}
+#Enquiry_form .captcha-box
+	{
+		background:#fff;
+		padding:15px 15px 15px 35px;
+		color:#333;
+		width:79%;	
+		position:absolute;
+		bottom:-112px;
+		left:0px;
+		border-radius:0px 0px 50px 50px;
+	}
+#Enquiry_form .captcha-box h2
+	{
+		font-size:24px;
+		margin-bottom:15px;
+	}
+#Enquiry_form .captcha-box .dm_frm_send
+	{
+		background:#eb1e25 !important;
+		text-transform:uppercase;
+		width:36%;
+		font-size:15px;
+	}
+  /*---------------- ------------------  */
+ #Enquiry_form .nature-container input{
+     margin: 0px 2px 0 0;
+ }
+ .nature-container p span {
+    font-size: 13px;
+    padding-left: 4px;
+}
+
+.order_form_head > h2 {
+    background: transparent url(http://parklifelandscaping.com.au/wp-content/plugins/Online-quoting-form/img/arrowred.png) right center no-repeat;
+    text-align: center;
+    font-size: 21px;
+}

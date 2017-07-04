@@ -1,0 +1,97 @@
+<?php
+
+
+include "./swift/swift_required.php";
+include 'SmtpApiHeader.php';
+date_default_timezone_set('Asia/Calcutta');
+$hdr = new SmtpApiHeader();
+$toList = array('vn.sujithayur@gmail.com',"fdgddfg@fgdf.com","sujith.ayur@gmail.com");
+
+$nameList = array('Name 1', 'Name 2');
+$timeList = array('4 PM', '5 PM');
+$hdr->addSubVal('-name-', $nameList);
+$hdr->addSubVal('-time-', $timeList);
+
+$hdr->addTo($toList);
+//category Name,List id,Campaign id,
+$hdr->setCategory("category2"); //cat name
+$hdr->setCategory("25");       //list id
+$hdr->setCategory("10");      //Campaign id
+
+
+#$hdr->addFilterSetting('footer', 'enable', 1);
+#$hdr->addFilterSetting('footer', "text/plain", "Thank you for your business");
+
+// The subject of your email
+$subject = 'Example SendGrid Email';
+
+$from = array('yourcompany@example.com' => 'Name Of Your Company');
+
+$to = array('defaultdestination@example.com'=>'Personal Name Of Recipient');
+
+$text = <<<EOM
+Hello -name-,
+
+Thank you for your interest in our products. We have set up an appointment
+to call you at -time- EST to discuss your needs in more detail.
+
+Regards,
+Fred
+EOM;
+
+$html = <<<EOM
+<html>
+  <head></head>
+  <body>
+    <p>Hello -name-,<br>
+       Thank you for your interest in our products <a href='http://google.com'>Google</a>. http://google.com We have set up an appointment
+             to call you at -time- EST to discuss your needs in more detail.
+
+                Regards,
+
+                Fred, How are you?<br>
+    </p>
+  </body>
+</html>
+EOM;
+
+// Your SendGrid account credentials
+$username = 'PeakCampus';
+$password = '@tl@nt@12!';
+
+// Create new swift connection and authenticate
+$transport = Swift_SmtpTransport::newInstance('smtp.sendgrid.net', 25);
+$transport ->setUsername($username);
+$transport ->setPassword($password);
+$swift = Swift_Mailer::newInstance($transport);
+
+// Create a message (subject)
+$message = new Swift_Message($subject);
+
+// add SMTPAPI header to the message
+// *****IMPORTANT NOTE*****
+// SendGrid's asJSON function escapes characters. If you are using Swift Mailer's
+// PHP Mailer functions, the getTextHeader function will also escape characters.
+// This can cause the filter to be dropped.
+$headers = $message->getHeaders();
+$headers->addTextHeader('X-SMTPAPI', $hdr->asJSON());
+
+// attach the body of the email
+$message->setFrom($from);
+$message->setBody($html, 'text/html');
+$message->setTo($to);
+$message->addPart($text, 'text/plain');
+
+// send message
+if ($recipients = $swift->send($message, $failures))
+{
+// This will let us know how many users received this message
+// If we specify the names in the X-SMTPAPI header, then this will always be 1.
+echo 'Message sent out to '.count($to).' users';
+}
+// something went wrong =(
+else
+{
+echo "Something went wrong - ";
+print_r($failures);
+}
